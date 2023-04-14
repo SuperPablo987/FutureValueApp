@@ -1,8 +1,36 @@
-﻿@{
+﻿@model FVModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+    <div class="jumbotron col-md-6 mt-2 p-3 rounded">     
+        <h1 class="display-4">Future Value Calculator</h1>
+    </div>
+
+    <form asp-action="Index" method="post">
+        @*where error messages are displayed*@
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <div class="row">
+            <label class="col-md-4" asp-for="MonthlyInvestment">Monthly Investment:</label>
+            <input class="col-md-3" asp-for="MonthlyInvestment" />
+        </div>
+        <div class="row">
+            <label class="col-md-4" asp-for="AnnualInterestRate">Anual Interest Rate:</label>
+            <input class="col-md-3" asp-for="AnnualInterestRate" />
+        </div>
+        <div class="row">
+            <label class="col-md-4" asp-for="Years">Years:</label>
+            <input class="col-md-3" asp-for="Years" />
+        </div>
+        <div class="row">
+                <button class="offset-md-3 col-md-2" type="submit">Calculate</button>
+        </div>
+        <div class="row">
+            <label class="col-md-4">Future Value:</label>
+            <input class="col-md-3" value="@ViewBag.FV.ToString("c")" readonly/>
+        </div>
+    </form>
+        
 </div>

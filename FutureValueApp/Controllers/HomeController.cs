@@ -13,14 +13,27 @@ namespace FutureValueApp.Controllers
             _logger = logger;
         }
 
+        // [HttpGet] is what this actually is
         public IActionResult Index()
         {
+            ViewBag.FV = 0;
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        // do calculation using data collected on the form
+        public IActionResult Index(FVModel dataModel)
         {
-            return View();
+
+            if (ModelState.IsValid)
+            {
+                ViewBag.FV = dataModel.CalculateFutureValue();
+            }
+            else
+            { 
+                ViewBag.FV = 0; 
+            }
+            return View(dataModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -16,3 +16,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.jumbotron {
+    background-image: url('../images/money.jpg');
+    background-size: cover;
+    font-weight: bold;
+    width: 400px;
+}
+
+.row{
+    margin-bottom: 1em;
+}
+
